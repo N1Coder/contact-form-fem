@@ -1,0 +1,30 @@
+:root {
+  --primary-green-light: hsl(148, 38%, 91%);
+  --primary-green-medium: hsl(169, 82%, 27%);
+  --primary-red: hsl(0, 66%, 54%);
+  --neutral-white: hsl(0, 0%, 100%);
+  --neutral-grey-medium: hsl(186, 15%, 59%);
+  --neutral-grey-dark: hsl(187, 24%, 22%);
+}
+
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 200 to 800
+
+.karla-<uniquifier > {
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Karla", sans-serif;
+  min-height: 100dvh;
+  background-color: var(--primary-green-light);
+}
