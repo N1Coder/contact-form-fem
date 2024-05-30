@@ -30,14 +30,14 @@
           <label for="first-name"
             >First Name <span class="required-mark">*</span></label
           >
-          <input type="text" id="first-name" />
+          <input type="text" id="first-name" value="John" required />
         </div>
 
         <div>
           <label for="last-name"
             >Last Name <span class="required-mark">*</span></label
           >
-          <input type="text" id="last-name" />
+          <input type="text" id="last-name" value="Appleseed" required />
         </div>
       </section>
 
@@ -45,7 +45,13 @@
         <label for="email"
           >Email Address <span class="required-mark">*</span></label
         >
-        <input type="email" name="email" id="email" />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          value="email@example.com"
+          required
+        />
       </section>
 
       <section class="query-type-section">
@@ -53,24 +59,29 @@
           >Query Type <span class="required-mark">*</span></label
         >
 
-        <div>
-          <input
-            name="query-type"
-            type="radio"
-            id="general-enquiry"
-            value="General Enquiry"
-          />
-          <label for="general-enquiry">General Enquiry</label>
-        </div>
+        <div class="selections-container">
+          <label class="selection-box" for="general-enquiry">
+            <input
+              name="query-type"
+              type="radio"
+              id="general-enquiry"
+              value="General Enquiry"
+              checked
+            />
 
-        <div>
-          <input
-            name="query-type"
-            type="radio"
-            id="support-request"
-            value="Support Request"
-          />
-          <label for="support-request">Support Request</label>
+            <span> General Enquiry </span>
+          </label>
+
+          <label class="selection-box" for="support-request">
+            <input
+              name="query-type"
+              type="radio"
+              id="support-request"
+              value="Support Request"
+            />
+
+            <span> Support Request </span>
+          </label>
         </div>
       </section>
 
@@ -78,7 +89,7 @@
         <label for="message"
           >Message <span class="required-mark">*</span></label
         >
-        <textarea name="message" id="message"></textarea>
+        <textarea name="message" id="message">Hello</textarea>
       </section>
 
       <section class="consent-section">

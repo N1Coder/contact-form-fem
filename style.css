@@ -24,7 +24,125 @@
 }
 
 body {
+  display: grid;
+  place-items: center;
   font-family: "Karla", sans-serif;
   min-height: 100dvh;
   background-color: var(--primary-green-light);
+}
+
+section {
+  margin-bottom: 1.5rem;
+}
+
+label,
+input {
+  display: block;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: none;
+}
+
+input,
+textarea {
+  margin-top: 0.5rem;
+  font-family: "Karla", sans-serif;
+  color: var(--neutral-grey-dark);
+  border: 2px solid;
+  border-color: var(--neutral-grey-medium);
+  outline: none;
+  border-radius: 0.45rem;
+  width: 100%;
+}
+
+input {
+  padding: 0.75rem 1.25rem;
+}
+
+input:focus-visible,
+input:active {
+  border-color: var(--primary-green-medium);
+}
+
+span {
+  color: var(--primary-green-medium);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--neutral-white);
+  padding: 2rem;
+  border-radius: 1rem;
+  color: var(--neutral-grey-dark);
+}
+
+form h1 {
+  margin-bottom: 1.5rem;
+}
+
+form .name-section {
+  display: flex;
+  gap: 1rem;
+}
+
+form .query-type-section {
+  display: flex;
+  flex-direction: column;
+}
+
+form .query-type-section .selections-container {
+  display: flex;
+  gap: 1rem;
+}
+
+form .query-type-section .selection-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  padding: 0.75rem 1.25rem;
+  color: var(--neutral-grey-dark);
+  border: 2px solid;
+  border-color: var(--neutral-grey-medium);
+  border-radius: 0.45rem;
+  width: 100%;
+}
+
+form .query-type-section .selection-box span {
+  display: inline-block;
+  margin-left: 0.75rem;
+  color: var(--neutral-grey-dark);
+}
+
+form .query-type-section .selection-box input[type="radio"] {
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.25rem;
+  aspect-ratio: 1;
+  border: 0.1rem solid var(--primary-green-medium);
+  border-radius: 50%;
+}
+
+form .query-type-section .selection-box input[type="radio"]::before {
+  content: "";
+  width: 0.65rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1rem 1rem var(--primary-green-medium);
+}
+
+form .query-type-section .selection-box input[type="radio"]:checked::before {
+  transform: scale(1);
 }
