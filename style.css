@@ -76,6 +76,7 @@ form {
   background-color: var(--neutral-white);
   padding: 2rem;
   border-radius: 1rem;
+  width: min(90%, 42.5rem);
   color: var(--neutral-grey-dark);
 }
 
@@ -86,6 +87,10 @@ form h1 {
 form .name-section {
   display: flex;
   gap: 1rem;
+}
+
+form .name-section div {
+  width: 100%;
 }
 
 form .query-type-section {
@@ -99,22 +104,31 @@ form .query-type-section .selections-container {
 }
 
 form .query-type-section .selection-box {
+  --padding-inline: 1.25rem;
+
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   margin-top: 1rem;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem var(--padding-inline);
   color: var(--neutral-grey-dark);
   border: 2px solid;
   border-color: var(--neutral-grey-medium);
   border-radius: 0.45rem;
   width: 100%;
+  overflow: hidden;
 }
 
 form .query-type-section .selection-box span {
-  display: inline-block;
-  margin-left: 0.75rem;
+  position: absolute;
+  display: block;
+  padding-top: 0.75rem;
+  padding-left: calc(var(--padding-inline) + 2rem);
   color: var(--neutral-grey-dark);
+  inset: 0;
+  transition: 250ms;
+  transform-origin: center;
 }
 
 form .query-type-section .selection-box input[type="radio"] {
@@ -131,6 +145,11 @@ form .query-type-section .selection-box input[type="radio"] {
   aspect-ratio: 1;
   border: 0.1rem solid var(--primary-green-medium);
   border-radius: 50%;
+  z-index: 2;
+}
+
+form .query-type-section .selection-box:has(input[type="radio"]:focus-visible) {
+  border-color: var(--primary-green-medium);
 }
 
 form .query-type-section .selection-box input[type="radio"]::before {
@@ -145,4 +164,48 @@ form .query-type-section .selection-box input[type="radio"]::before {
 
 form .query-type-section .selection-box input[type="radio"]:checked::before {
   transform: scale(1);
+}
+
+form .query-type-section .selection-box input[type="radio"]:checked ~ span {
+  background-color: var(--primary-green-light);
+}
+
+form .message-section textarea {
+  padding: 0.75rem 1.25rem;
+  line-height: 1.5;
+  min-height: 6.5rem;
+}
+
+form .message-section textarea:focus-visible {
+  border-color: var(--primary-green-medium);
+}
+
+form .consent-section label {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+form .consent-section .checkbox p {
+  margin-left: 5rem;
+}
+
+form .consent-section input[type="checkbox"] {
+  appearance: none;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+form .consent-section .checkbox {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border: 2px solid var(--neutral-grey-medium);
+  border-radius: 0.15rem;
 }

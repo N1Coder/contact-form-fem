@@ -67,6 +67,7 @@
               id="general-enquiry"
               value="General Enquiry"
               checked
+              required
             />
 
             <span> General Enquiry </span>
@@ -89,16 +90,22 @@
         <label for="message"
           >Message <span class="required-mark">*</span></label
         >
-        <textarea name="message" id="message">Hello</textarea>
+        <textarea name="message" id="message">
+Hello, I would like to know if you're able to build Shopify e-commerce sites. We're starting a business and we're going to use Shopify. But it would be great to work with an agency who specialises in working with it.</textarea
+        >
       </section>
 
       <section class="consent-section">
-        <input type="checkbox" id="consent" name="consent" />
-        <label for="consent"
-          >I consent to being contacted by the team
+        <label for="consent">
+          <input type="checkbox" id="consent" name="consent" />
+          <span class="checkbox"></span>
 
-          <span class="required-mark">*</span></label
-        >
+          <p>
+            I consent to being contacted by the team
+
+            <span class="required-mark">*</span>
+          </p>
+        </label>
       </section>
 
       <button type="button">Submit</button>
