@@ -299,6 +299,11 @@ button#submit:focus-visible {
     gap: 0.25rem;
   }
 
+  form .query-type-section .selections-container .selections-input {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
   form .message-section textarea {
     min-height: 12.5rem;
   }
