@@ -1,3 +1,3 @@
 export const isInputEmpty = (el) => {
-  return el.value === ""
+  return el.value.length === 0
 }
