@@ -1,4 +1,8 @@
+import { addErrorStatusToInput } from "./util/addErrorStatusToInput.js"
+import { addErrorStatusTextToParent } from "./util/addErrorStatusTextToParent.js"
 import { isEmailValid } from "./util/isEmailValid.js"
+import { isErrorElShows } from "./util/isErrorElShows.js"
+import { isInputEmpty } from "./util/isInputEmpty.js"
 
 const firstNameInput = document.querySelector("#first-name"),
   lastNameInput = document.querySelector("#last-name"),
@@ -7,75 +11,61 @@ const firstNameInput = document.querySelector("#first-name"),
   msgInput = document.querySelector("#message"),
   consentCheckboxInput = document.querySelector("#consent")
 
-const errorMsg = document.querySelector(".error-text")
-
 const btnSubmit = document.querySelector("#submit")
-
-console.log(firstNameInput)
-console.log(firstNameInput.parentElement.contains(errorMsg))
-
-const isInputEmpty = (el) => {
-  return el.value === ""
-}
-
-const isInputChecked = (el) => {
-  return el.checked
-}
-
-const addErrorStatusToInput = (el) => {
-  return el.classList.add("error")
-}
-
-const addErrorStatusText = (el, msg) => {
-  el.parentElement.insertAdjacentHTML(
-    "beforeend",
-    `
-    <p class="error-text visible">
-      ${msg}
-    </p
-  `
-  )
-}
 
 btnSubmit.addEventListener("click", () => {
   if (isInputEmpty(firstNameInput)) {
     addErrorStatusToInput(firstNameInput)
 
-    if (!firstNameInput.parentElement.contains(errorMsg))
-      addErrorStatusText(firstNameInput, "This field is required")
+    if (isErrorElShows(firstNameInput)) {
+      addErrorStatusTextToParent(firstNameInput, "This field is required")
+    }
   }
 
   if (isInputEmpty(lastNameInput)) {
     addErrorStatusToInput(lastNameInput)
 
-    if (!lastNameInput.parentElement.contains(errorMsg))
-      addErrorStatusText(lastNameInput, "This field is required")
+    if (isErrorElShows(lastNameInput)) {
+      addErrorStatusTextToParent(lastNameInput, "This field is required")
+    }
   }
 
   if (isInputEmpty(emailInput) || !isEmailValid(emailInput.value)) {
     addErrorStatusToInput(emailInput)
 
-    if (!emailInput.parentElement.contains(errorMsg))
-      addErrorStatusText(emailInput, "Please enter a valid email address")
+    if (isErrorElShows(emailInput)) {
+      addErrorStatusTextToParent(
+        emailInput,
+        "Please enter a valid email address"
+      )
+    }
   }
 
   if (isInputEmpty(msgInput)) {
     addErrorStatusToInput(msgInput)
 
-    if (!msgInput.parentElement.contains(errorMsg))
-      addErrorStatusText(msgInput, "This field is required")
+    if (isErrorElShows(msgInput)) {
+      addErrorStatusTextToParent(msgInput, "This field is required")
+    }
   }
 
   if (!isInputChecked(radioInput)) {
-    // todo: add error text below
-    // addErrorStatusText(radioInput, "Please select a query type")
+    if (isErrorElShows(radioInput)) {
+      addErrorStatusTextToParent(
+        radioInput,
+        "Please select a query type",
+        ".selections-container"
+      )
+    }
   }
 
   if (!isInputChecked(consentCheckboxInput)) {
-    // todo: add error text below
-    // addErrorStatusText(
-    //   consentCheckboxInput,
-    //   "To submit this form, please consent to being contacted"
-    // )
+    if (isErrorElShows(consentCheckboxInput)) {
+      addErrorStatusTextToParent(
+        consentCheckboxInput,
+        "To submit this form, please consent to being contacted",
+        ".consent-section"
+      )
+    }
   }
 })

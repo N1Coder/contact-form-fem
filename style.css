@@ -63,7 +63,7 @@ input {
 
 .error-text {
   color: var(--primary-red);
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
   margin-bottom: 0.25rem;
   opacity: 0;
 }
@@ -114,6 +114,12 @@ form .query-type-section {
 }
 
 form .query-type-section .selections-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+form .query-type-section .selections-container .selections-input {
   display: flex;
   gap: 1rem;
 }
