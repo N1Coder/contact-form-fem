@@ -1,8 +1,9 @@
 import { addErrorStatusToInput } from "./util/addErrorStatusToInput.js"
 import { addErrorStatusTextToParent } from "./util/addErrorStatusTextToParent.js"
 import { isEmailValid } from "./util/isEmailValid.js"
-import { isErrorElShows } from "./util/isErrorElShows.js"
+import { isErrorElNotShows } from "./util/isErrorElNotShows.js"
 import { isInputEmpty } from "./util/isInputEmpty.js"
+import { isInputChecked } from "./util/isInputChecked.js"
 
 const firstNameInput = document.querySelector("#first-name"),
   lastNameInput = document.querySelector("#last-name"),
@@ -15,17 +16,26 @@ const btnSubmit = document.querySelector("#submit")
 
 btnSubmit.addEventListener("click", () => {
   if (isInputEmpty(firstNameInput)) {
+    console.log(isInputEmpty(firstNameInput))
     addErrorStatusToInput(firstNameInput)
 
-    if (isErrorElShows(firstNameInput)) {
+    if (isErrorElNotShows(firstNameInput)) {
       addErrorStatusTextToParent(firstNameInput, "This field is required")
+    }
+  } else {
+    if (!isInputEmpty(firstNameInput) && !isErrorElNotShows(firstNameInput)) {
+      firstNameInput.parentElement.removeChild(
+        document.querySelector(".error-text")
+      )
+
+      firstNameInput.classList.remove("error")
     }
   }
 
   if (isInputEmpty(lastNameInput)) {
     addErrorStatusToInput(lastNameInput)
 
-    if (isErrorElShows(lastNameInput)) {
+    if (isErrorElNotShows(lastNameInput)) {
       addErrorStatusTextToParent(lastNameInput, "This field is required")
     }
   }
@@ -33,7 +43,7 @@ btnSubmit.addEventListener("click", () => {
   if (isInputEmpty(emailInput) || !isEmailValid(emailInput.value)) {
     addErrorStatusToInput(emailInput)
 
-    if (isErrorElShows(emailInput)) {
+    if (isErrorElNotShows(emailInput)) {
       addErrorStatusTextToParent(
         emailInput,
         "Please enter a valid email address"
@@ -44,13 +54,13 @@ btnSubmit.addEventListener("click", () => {
   if (isInputEmpty(msgInput)) {
     addErrorStatusToInput(msgInput)
 
-    if (isErrorElShows(msgInput)) {
+    if (isErrorElNotShows(msgInput)) {
       addErrorStatusTextToParent(msgInput, "This field is required")
     }
   }
 
   if (!isInputChecked(radioInput)) {
-    if (isErrorElShows(radioInput)) {
+    if (isErrorElNotShows(radioInput)) {
       addErrorStatusTextToParent(
         radioInput,
         "Please select a query type",
@@ -60,7 +70,7 @@ btnSubmit.addEventListener("click", () => {
   }
 
   if (!isInputChecked(consentCheckboxInput)) {
-    if (isErrorElShows(consentCheckboxInput)) {
+    if (isErrorElNotShows(consentCheckboxInput)) {
       addErrorStatusTextToParent(
         consentCheckboxInput,
         "To submit this form, please consent to being contacted",
